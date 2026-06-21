@@ -1,0 +1,216 @@
+* {
+    box-sizing: border-box;
+}
+
+
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #0f0f0f;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editorial {
+    max-width: 720px;
+    padding: 80px 40px;
+    text-align: center;
+    animation: fadeUp 1.6s ease forwards;
+}
+
+/* ДАТА — главный герой */
+.date {
+    font-family: 'Great Vibes', cursive;
+    font-size: 96px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    cursor: default;
+    text-shadow: 0 6px 30px rgba(0,0,0,.45);
+}
+
+/* ЛОКАЦИЯ */
+.location {
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 60px;
+}
+
+<div class="countdown fade">
+    <div class="countdown-label">До свадьбы осталось</div>
+    <div id="countdown-value" class="countdown-value"></div>
+</div>
+
+
+/* ТЕКСТ */
+.text p {
+    font-size: 16px;
+    line-height: 1.9;
+    margin-bottom: 18px;
+    opacity: 0.9;
+}
+
+/* ФОРМАТ */
+.format {
+    margin-top: 40px;
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+/* RSVP */
+.rsvp {
+    margin-top: 80px;
+}
+
+.rsvp-title {
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: 12px;
+}
+
+.rsvp-subtitle {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.rsvp-link {
+    display: inline-block;
+    padding: 14px 42px;
+    border-radius: 40px;
+    border: 1.5px solid rgba(255,255,255,.7);
+
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    transition: all .4s ease;
+}
+
+.rsvp-link:hover {
+    background: rgba(255,255,255,.15);
+    box-shadow: 0 0 40px rgba(255,255,255,.35);
+    transform: translateY(-2px);
+}
+
+/* АНИМАЦИЯ */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 📱 МОБИЛКА */
+@media (max-width: 600px) {
+    .date {
+        font-size: 64px;
+    }
+
+    .editorial {
+        padding: 60px 24px;
+    }
+}
+
+.muted {
+    opacity: 0.6;
+    font-size: 14px;
+}
+
+.grain {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    opacity: 0.08;
+
+    animation: grainMove 6s steps(10) infinite;
+}
+
+@keyframes grainMove {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-1%, 1%); }
+    50% { transform: translate(1%, -1%); }
+    75% { transform: translate(-1%, -1%); }
+    100% { transform: translate(0, 0); }
+}
+
+
+.fade {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.2s ease forwards;
+}
+
+.fade:nth-child(1) { animation-delay: .2s; }
+.fade:nth-child(2) { animation-delay: .6s; }
+.fade:nth-child(3) { animation-delay: 1.0s; }
+.fade:nth-child(4) { animation-delay: 1.4s; }
+.fade:nth-child(5) { animation-delay: 1.8s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hover-text span {
+    display: inline-block;
+    transition:
+        transform .3s ease,
+        text-shadow .3s ease;
+}
+
+.hover-text span:hover {
+    transform: translateY(-3px);
+    text-shadow:
+        0 2px 2px rgba(255,255,255,.2),
+        0 10px 25px rgba(0,0,0,.6);
+}
+
+/* --- Editorial hover effect for text --- */
+.editorial .date,
+.editorial .location,
+.editorial .text p,
+.editorial .format,
+.editorial .rsvp-title,
+.editorial .rsvp-subtitle {
+    transition:
+        transform .35s ease,
+        text-shadow .35s ease;
+}
+
+/* Hover only on desktop */
+@media (hover: hover) and (pointer: fine) {
+
+    .editorial .date:hover,
+    .editorial .location:hover,
+    .editorial .text p:hover,
+    .editorial .format:hover,
+    .editorial .rsvp-title:hover,
+    .editorial .rsvp-subtitle:hover {
+
+        transform: translateY(-1.5px);
+
+        text-shadow:
+            0 1px 1px rgba(255,255,255,.15),
+            0 8px 22px rgba(0,0,0,.45);
+    }
+}

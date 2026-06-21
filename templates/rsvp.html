@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Подтверждение участия</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/css/rsvp.css">
+</head>
+<body>
+
+<form class="rsvp-form" method="post" id="rsvpForm">
+
+
+    <h1>Подтверждение участия</h1>
+
+    <label>
+        Имя и фамилия
+        <input type="text" name="name" required>
+    </label>
+
+    <label>
+        Вы будете присутствовать?
+        <select name="attending" id="attending" required>
+            <option value="Да">Да, с радостью</option>
+            <option value="Нет">К сожалению, не смогу</option>
+        </select>
+    </label>
+
+    <div id="details">
+
+        <label>
+            Количество гостей
+            <input type="number" name="guests_count" min="1" value="1">
+        </label>
+
+        <label>
+            Будете с детьми?
+            <select name="with_children" id="with_children">
+                <option value="no">Нет</option>
+                <option value="yes">Да</option>
+            </select>
+        </label>
+
+        <label id="children_block" style="display:none;">
+            Количество детей
+            <input type="number" name="children_count" min="1" value="1">
+        </label>
+
+        <div id="alcohol_block">
+    <fieldset class="alcohol">
+        <legend>Алкогольные предпочтения</legend>
+
+        <label>
+            <input type="checkbox" name="alcohol" value="Вино">
+            <span>Вино</span>
+        </label>
+
+        <label>
+            <input type="checkbox" name="alcohol" value="Крепкий алкоголь">
+            <span>Крепкий алкоголь</span>
+        </label>
+
+        <label>
+            <input type="checkbox" name="alcohol" value="Пиво">
+            <span>Пиво</span>
+        </label>
+
+        <label>
+            <input type="checkbox" name="alcohol" value="Не употребляю">
+            <span>Не употребляю</span>
+        </label>
+    </fieldset>
+</div>
+
+
+
+
+        <label>
+            Комментарий (по желанию)
+            <textarea name="comment"></textarea>
+        </label>
+
+    </div>
+
+    <button type="submit">Отправить ответ</button>
+
+</form>
+
+<script>
+const attending = document.getElementById("attending");
+const details = document.getElementById("details");
+const withChildren = document.getElementById("with_children");
+const childrenBlock = document.getElementById("children_block");
+const alcoholBlock = document.getElementById("alcohol_block");
+
+function toggleDetails() {
+    const isAttending = attending.value === "Да";
+    details.style.display = isAttending ? "block" : "none";
+    alcoholBlock.style.display = isAttending ? "block" : "none";
+}
+
+attending.onchange = toggleDetails;
+toggleDetails();
+
+
+attending.onchange = () => {
+    details.style.display = attending.value === "Да" ? "block" : "none";
+};
+
+withChildren.onchange = () => {
+    childrenBlock.style.display = withChildren.value === "yes" ? "block" : "none";
+};
+
+const form = document.getElementById("rsvpForm");
+
+form.addEventListener("submit", function (e) {
+    let valid = true;
+
+    document.querySelectorAll(".error").forEach(el => {
+        el.classList.remove("error");
+    });
+
+    const nameInput = form.querySelector('input[name="name"]');
+    if (!nameInput.value.trim()) {
+        nameInput.classList.add("error");
+        valid = false;
+    }
+
+    if (attending.value === "Да") {
+        const guests = form.querySelector('input[name="guests_count"]');
+        if (guests.value < 1) {
+            guests.classList.add("error");
+            valid = false;
+        }
+    }
+
+    if (!valid) {
+        e.preventDefault();
+    }
+});
+
+</script>
+
+</body>
+</html>

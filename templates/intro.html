@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <title>Приглашение</title>
+    <link rel="stylesheet" href="/static/css/intro.css">
+
+</head>
+<body>
+
+<div class="bg"></div>
+
+<div class="intro">
+    <svg class="name-svg" viewBox="0 0 1200 200">
+        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle">
+            {{ names }}
+        </text>
+    </svg>
+
+    <p class="subtitle">Мы решили пожениться</p>
+    <button id="enter">
+    <span>Открыть приглашение</span>
+    <span class="heart-btn">❤</span>
+</button>
+
+</div>
+
+
+<div class="hearts"></div>
+
+<script src="/static/js/intro.js"></script>
+</body>
+</html>

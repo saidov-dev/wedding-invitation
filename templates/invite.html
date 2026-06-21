@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Приглашение</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/css/invite.css">
+</head>
+<body>
+
+<div class="editorial">
+
+    <div class="date hover-text fade">
+    <span>0</span><span>8</span><span> · </span>
+    <span>0</span><span>8</span><span> · </span>
+    <span>2</span><span>0</span><span>2</span><span>6</span>
+</div>
+
+
+    <div class="location fade">Тбилиси, Грузия</div>
+
+    <div class="text fade">
+        <p>Мы будем счастливы разделить с вами этот особенный день.</p>
+        <p>
+            Приглашаем вас стать частью нашего праздника и провести его вместе с нами —
+            в атмосфере любви, тепла и радости.
+        </p>
+    </div>
+
+    <div class="format fade">
+        Торжественная церемония, сбор гостей, фуршет и ужин
+    </div>
+
+    <div class="rsvp fade">
+    </div>
+
+<div class="rsvp">
+    <div class="rsvp-title">ПОДТВЕРЖДЕНИЕ</div>
+
+    {% if rsvp_open %}
+        <div class="rsvp-subtitle">
+            Пожалуйста, подтвердите участие до <br>
+            <strong>01 · 04 · 2026</strong>
+        </div>
+
+        <a href="/rsvp" class="rsvp-link">Дать ответ</a>
+    {% else %}
+        <div class="rsvp-subtitle muted">
+            Приём ответов завершён.<br>
+            Если вы не успели подтвердить участие,<br>
+            пожалуйста, свяжитесь с нами лично.
+        </div>
+    {% endif %}
+</div>
+
+
+</div>
+
+</body>
+<div class="grain"></div>
+
+</html>
